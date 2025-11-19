@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatLine } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -18,11 +19,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatLine,
     RouterLink,
     MatButtonModule,
     MatListModule,
     MatTooltipModule,
+    MatDialogModule,
+    MatLine,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
