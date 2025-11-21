@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatLine,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule,   
+    MatNativeDateModule,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
