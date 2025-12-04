@@ -32,7 +32,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class DialogAddUserComponent  {
   user = new User();
-  birthDate: Date;
+  birthDate: Date | undefined;
 
   dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
     const day = cellDate.getDay();
@@ -40,7 +40,9 @@ export class DialogAddUserComponent  {
   };
 
   saveUser() {
-    this.user.birthDate = this.birthDate.getTime();
+    if (this.birthDate) {
+      this.user.birthDate = this.birthDate.getTime();
+    }
     console.log('Current user is', this.user);
   }
 }

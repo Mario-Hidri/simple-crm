@@ -1,10 +1,27 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
-import { provideClientHydration } from '@angular/platform-browser';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(), provideAnimationsAsync()]
+  providers: [
+    provideRouter(routes),
+    provideAnimations(),
+    provideFirebaseApp(() =>
+      initializeApp({
+        apiKey: 'AIzaSyC3OtpK-0eMW-nm5MYN5JyY_qaNsf91Gh0',
+        authDomain: 'simple-crm-ceac0.firebaseapp.com',
+        projectId: 'simple-crm-ceac0',
+        storageBucket: 'simple-crm-ceac0.firebasestorage.app',
+        messagingSenderId: '896286293972',
+        appId: '1:896286293972:web:374dd951f3fdb014052041',
+        measurementId: 'G-XEMFBY4FQ5'
+      })
+    ),
+    provideFirestore(() => getFirestore())
+  ]
 };
