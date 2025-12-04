@@ -1,12 +1,10 @@
-import { Component, inject } from '@angular/core';
-import { AsyncPipe, CommonModule } from '@angular/common';
-import { Observable } from 'rxjs';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatLine, MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
@@ -21,30 +19,22 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterOutlet,
-    RouterLink,
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
+    RouterLink,
     MatButtonModule,
     MatListModule,
     MatTooltipModule,
     MatDialogModule,
+    MatLine,
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    FormsModule
   ],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
   title = 'simple-crm';
-  
-  firestore = inject(Firestore);
-  items$: Observable<any[]>;
-
-  constructor() {
-    const aCollection = collection(this.firestore, 'items');
-    this.items$ = collectionData(aCollection) as Observable<any[]>;
-  }
 }
