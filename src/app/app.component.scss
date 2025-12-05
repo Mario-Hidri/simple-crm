@@ -30,7 +30,6 @@ mat-toolbar-row {
   padding: 0;
   margin: 0;
 
-
   li {
     padding-left: 16px;
     padding-right: 16px;
@@ -39,8 +38,8 @@ mat-toolbar-row {
     align-items: center;
     cursor: pointer;
 
-    mat-icon{
-        margin: 16px;
+    mat-icon {
+      margin: 16px;
     }
 
     &:hover {
@@ -53,7 +52,7 @@ mat-toolbar-row {
   }
 }
 
-.router-container{
-    padding-left: 56px;
-    padding-top: 16px;
+.router-container {
+  padding-left: 56px;
+  padding-top: 16px;
 }

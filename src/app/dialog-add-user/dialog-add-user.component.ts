@@ -12,8 +12,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCalendarCellClassFunction } from '@angular/material/datepicker';
 import { FormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { User } from '../../models/user.class';
+import { NgIf } from '@angular/common';
+
 
 import {
   Firestore,
@@ -37,6 +39,8 @@ import { Observable } from 'rxjs';
     MatButtonModule,
     FormsModule,
     AsyncPipe,
+    MatProgressBarModule,
+    NgIf
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrls: ['./dialog-add-user.component.scss'],
@@ -44,6 +48,7 @@ import { Observable } from 'rxjs';
 export class DialogAddUserComponent {
   user = new User();
   birthDate?: Date;
+  loading =false;
 
   firestore: Firestore = inject(Firestore);
   items$: Observable<any[]>;
@@ -64,11 +69,12 @@ export class DialogAddUserComponent {
     if (this.birthDate) {
       this.user.birthDate = this.birthDate.getTime();
     }
-
+    this.loading = true;
     const usersCollection = collection(this.firestore, 'users');
 
     try {
       const result = await addDoc(usersCollection, { ...this.user });
+      this.loading = false; 
       console.log('User added', result);
     } catch (error) {
       console.error(error);
