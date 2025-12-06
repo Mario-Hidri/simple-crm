@@ -27,7 +27,6 @@ import { FormsModule } from '@angular/forms';
     MatListModule,
     MatTooltipModule,
     MatDialogModule,
-    MatLine,
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,

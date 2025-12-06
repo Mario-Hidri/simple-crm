@@ -3,6 +3,7 @@ import {
   MatDialogTitle,
   MatDialogContent,
   MatDialogActions,
+  MatDialogRef,
 } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -15,6 +16,7 @@ import { AsyncPipe } from '@angular/common';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { User } from '../../models/user.class';
 import { NgIf } from '@angular/common';
+
 
 
 import {
@@ -38,9 +40,8 @@ import { Observable } from 'rxjs';
     MatNativeDateModule,
     MatButtonModule,
     FormsModule,
-    AsyncPipe,
     MatProgressBarModule,
-    NgIf
+    NgIf,
   ],
   templateUrl: './dialog-add-user.component.html',
   styleUrls: ['./dialog-add-user.component.scss'],
@@ -58,7 +59,7 @@ export class DialogAddUserComponent {
     return day === 0 ? 'sunday-date' : '';
   };
 
-  constructor() {
+  constructor(public dialogRef: MatDialogRef<DialogAddUserComponent>) { 
     const aCollection = collection(this.firestore, 'items');
     this.items$ = collectionData(aCollection, { idField: 'id' }) as Observable<
       any[]
@@ -76,6 +77,7 @@ export class DialogAddUserComponent {
       const result = await addDoc(usersCollection, { ...this.user });
       this.loading = false; 
       console.log('User added', result);
+      this.dialogRef.close();
     } catch (error) {
       console.error(error);
     }
