@@ -53,7 +53,16 @@ mat-toolbar-row {
 }
 
 .router-container {
-    padding-left: 56px;
-    padding-right: 56px;
-    padding-top: 16px;
+  padding-left: 56px;
+  padding-right: 56px;
+  padding-top: 16px;
+}
+
+.logo-container {
+  margin-bottom: 24px;
+  img {
+    height: 60px;
+    width: 60px;
+    margin-left: 12px;
+  }
 }
